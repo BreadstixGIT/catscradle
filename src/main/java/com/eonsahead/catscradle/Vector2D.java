@@ -30,7 +30,8 @@ public class Vector2D {
      * @param y is the y coordinate of the point.
      */
     public Vector2D(double x, double y) {
-
+    	this.x = x;
+    	this.y = y;
     } // Vector2D( double, double )
 
     /**
@@ -50,8 +51,7 @@ public class Vector2D {
      * @return the sum of this vector and the other vector.
      */
     public Vector2D add( Vector2D v ) {
-
-      return new Vector2D( 0.0, 0.0 );
+      return new Vector2D((this.x + v.x), (this.y +v.y));
     } // add (Vector2D )
     
     /**
@@ -66,8 +66,7 @@ public class Vector2D {
      * @return 
      */
     public Vector2D scale( double xFactor, double yFactor ) {
-
-      return new Vector2D( 0.0, 0.0 );
+      return new Vector2D( (this.x * xFactor), (this.y * yFactor));
     } // scale( double )
     
     /**
@@ -88,8 +87,7 @@ public class Vector2D {
      * @return a stretched (or contracted) vector.
      */
     public Vector2D scale( double factor ) {
-
-      return new Vector2D( 0.0, 0.0 );
+      return new Vector2D( (this.x * factor), (this.y * factor) );
     } // scale( double )
     
     /**
@@ -108,8 +106,7 @@ public class Vector2D {
      * @return is a rotated version of this vector.
      */
     public Vector2D rotate( double angle ) {
-
-      return new Vector2D( 0.0, 0.0 );
+      return new Vector2D((this.x * Math.cos(angle) - this.y * Math.sin(angle)), (this.x * Math.sin(angle) - this.y * Math.cos(angle)) );
     } // rotate( double )
     
     /**
@@ -125,8 +122,7 @@ public class Vector2D {
      */
     public Vector2D rotateScaleTranslate( double angle, double scaleX, 
             double scaleY, double deltaX, double deltaY ) {
-      
-      return new Vector2D( 0.0, 0.0 );
+      return new Vector2D( this.rotate(angle).scale(scaleX, scaleY).x +deltaX, this.rotate(angle).scale(scaleX, scaleY).y +deltaY);
     } // rotateScaleTranslate( double, double, double, double, double )
     
     /**
@@ -147,8 +143,7 @@ public class Vector2D {
      * components.
      */
     public double dot( Vector2D v ) {
-
-      return 0.0;
+      return ((this.x * v.x) + (this.y * v.y));
     } // dot( Vector2D )
     
     /**
@@ -168,8 +163,7 @@ public class Vector2D {
      * @return the length of the vector.
      */
     public double magnitude() {
-
-      return 0.0;
+      return Math.sqrt(this.dot(this));
     } // magnitude()
     
     /**
@@ -180,8 +174,7 @@ public class Vector2D {
      * @return the value of the vector's x component. 
      */
     public double getX() {
-//        return this.x;
-      return 0.0;
+      return this.x;
     } // getX()
     
      /**
@@ -192,8 +185,7 @@ public class Vector2D {
      * @return the value of the vector's y component. 
      */
     public double getY() {
-
-      return 0.0;
+      return this.y;
     } // getY()
     
     /**
@@ -205,8 +197,7 @@ public class Vector2D {
      */
     @Override
     public String toString() {
-
-      return "";
+        return (this.x + " , " + this.y);
     } // toString()
     
     /**
